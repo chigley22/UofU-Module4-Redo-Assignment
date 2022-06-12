@@ -1,0 +1,22 @@
+body {
+    margin: 5rem 15rem 15rem 15rem;
+    display: flex;
+    text-align: center;
+}
+
+.highScore {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+}
+
+.timer {
+    position: absolute;
+    top: 5%;
+    right: 15%;
+}
+
+.begin {
+    text-align: center;
+}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <div class="highScore"><a href="/html/scores.html">View Previous Highscores</a> 
+    </div>
+
+    <div class="timer">Time Remaining: <span id="time">0</span></div>
+
+    <div class="wrapper">
+        <div id="beginQuiz" class="begin">
+            <h1>Coding Quiz</h1>
+            <p>
+                Test Your Knowledge With This Coding Quiz. You will be timed and with each incorrect answer the timer will decrease quicker. Once the timer has run out you will be provided a score. This will than be tracked under the Previous Highscores.
+            </p>
+
+            <button id="begin">Begin Quiz</button>
+        </div>
+
+        <div id="questions" class="hide">
+            <h2 id="questionHeader"></h2>
+            <div id="multipleChoice" class="multipleChoice"></div>
+        </div>
+
+        <div id="endQuiz" class="hide">
+            <h2>Finished</h2>
+            <p>Results <span id="resultsScore"></span></p>
+            <p>
+                Enter Initials: <input type="text" id="initials" max="3" />
+                <button id="submit">Submit</button>
+            </p>
+        </div>
+    </div>
+    
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
