@@ -1,4 +1,87 @@
 var beginBtn = document.getElementById("begin")
+var timerEl = document.getElementById("time")
+var questionsEl = document.getElementById("questions")
+var multipleChoiceEl = document.getElementById("multipleChoice")
+var submitBtn = document.getElementById("submit")
+var initialsEl = document.getElementById("initials")
+var time = questions.length * 15
+var timerID
+var currentQuestionIndex = 0
+
+
+
+function beginQuiz() {
+    var beginQuizEl = document.getElementById("beginQuiz")
+    beginQuizEl.setAttribute("class","hide")
+
+    questionsEl.removeAttribute("class")
+
+    timerID = setInterval(clockTick, 1000)
+
+    timerEl.textContent = time
+
+    getQuestion()
+}
+
+function getQuestion() {
+    var currentQuestion = question[currentQuestionIndex]
+
+    var titleEl = document.getElementById("questionHeader")
+    titleEl.textContent = currentQuestion.title
+
+    multipleChoiceEl.innerHTML = ""
+
+    currentQuestion.choices.forEach(function (choice, i) {
+        var choiceNode = document.getElement("button")
+        choiceNode.setAttribute("class","choice")
+        choiceNode.setAttribute("value", choice)
+
+        choiceNode.textContent = i + 1 + "." + choice
+        choiceNode.onclick = questionClick
+        multipleChoiceEl.appendChild(choiceNode)
+    })
+}
+
+function questionClick() {
+    if (this.value !== questions[currentQuestionIndex].answer){
+        time -= 15
+        if(time < 0) {
+            time = 0
+        }
+
+        timerEl.textContent = time
+    }
+
+    currentQuestionIndex++
+    if (currentQuestionIndex === question.length) {
+        endQuiz()
+    } else {
+        getQuestion()
+    }
+}
+
+function endQuiz() {
+    clearInterval(timerID)
+
+    var endQuizEl = document.getElementById("endQuiz")
+    endQuizEl.removeAttribute("class")
+
+    var resultsScoreEl = document.getElementById("resultsScore")
+    resultsScoreEl.textContent = time
+
+    questionsEl.setAttribute("class","hide")
+}
+
+function clockTick() {
+    time--
+    timerEl.textContent = time
+
+    if (time <= 0) {
+        endQuiz()
+    }
+}
+
+
 
 
 beginBtn.onclick = beginQuiz
