@@ -1,6 +1,7 @@
 # UofU-Week4-Redo-Assignment
 
 # Depoloyed Website URL
+https://chigley22.github.io/UofU-Week4-Redo-Assignment/
 
 # GitHub Repository
 https://github.com/chigley22/UofU-Week4-Redo-Assignment
