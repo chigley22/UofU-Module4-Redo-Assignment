@@ -103,7 +103,7 @@ function endQuiz() {
     clearInterval(timerID)
 
     var endQuizEl = document.getElementById("endQuiz")
-    endQuizEl.removeAttribute("class")
+    endQuizEl.removeAttribute("class","hide")
 
     var resultsScoreEl = document.getElementById("resultsScore")
     resultsScoreEl.textContent = time
@@ -120,7 +120,9 @@ function clockTick() {
     }
 }
 
-beginBtn.onclick = beginQuiz
+if (beginBtn !== null){
+    beginBtn.onclick = beginQuiz
+}
 
 function questionClick() {
     if (this.value !== questions[currentQuestionIndex].answer){
@@ -144,7 +146,13 @@ function saveResults () {
     var initials = initialsEl.value.trim()
 
     if (initials !== "") {
+        if (window.localStorage.getItem("results") === null) {
+            window.localStorage.setItem("results", JSON.stringify([]))
+        }
+
         var results = JSON.parse(window.localStorage.getItem("results"))
+
+        console.log(results)
 
         var newResult = {
             result: time,
@@ -158,5 +166,7 @@ function saveResults () {
     }
 }
 
-submitBtn.onclick = saveResults
+if (submitBtn !== null){
+    submitBtn.onclick = saveResults
+}
 
