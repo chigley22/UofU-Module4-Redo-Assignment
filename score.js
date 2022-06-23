@@ -1,31 +1,19 @@
 function renderScores()  {
-    var results = JSON.parse(window.localStorage.getItem("results"))
-    console.log(results)
-}
+    var response = JSON.parse(window.localStorage.getItem("results"))
+    console.log(response)
 
-function getResults() {
-    fetch(window.localStorage.results)
-    .then(function(response){
-        return response.json();
-    }) 
-    .then(function (response) {
+        var resultsList = document.getElementById('results')
 
-        for (i=0; i++; i<results.length){
-        var setTableRow = document.createElement('tr')
+        for (i=0; i<response.length && i<10; i++){
+        var currentListItem = document.createElement('li')
+    
+        currentListItem.innerHTML = `Results: ${response[i].result} Initials: ${response[i].initials}`
+        console.log(response[i].result)
+        console.log(currentListItem)
 
-        var setTableResults = document.createElement('td')
-
-        var resultsList = document.createElement('ul')
-
-        resultsList.innerHTML = [results,initials]
-
-        setTableResults.appendChild(resultsList)
-
-        setTableRow.appendChild(setTableResults)
-        
-        tableBody.appendChild(setTableRow)
-    }
-    })
+        resultsList.append(currentListItem)
+        console.log(resultsList)
+        }
 }
 
 renderScores() 
